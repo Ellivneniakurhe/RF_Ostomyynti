@@ -24,6 +24,7 @@ Klikkaa Elementtia
 
 Tarkista Elementti Status
     [Arguments]    ${elementti_xp}    ${virheviesti}
+    Sleep    2s
     # Tarkistetaan, että elementti on sivustolla
     ${elem_status}    Run Keyword And Return Status    Wait Until Page Contains Element    ${elementti_xp}
     IF    not ${elem_status}
@@ -34,6 +35,5 @@ Tarkista Ilmoitus
     [Arguments]    ${ilmoitusnimi}    ${ilmoituskuvaus}
     # Tarkista, että sivulla on elementti joka on divin alla ja sisältää otsikko h4 joka sisältää
     # annetun ilmoituksen nimen JA elementillä on p joka sisältää ilmoituksen kuvauksen
-    Sleep    3s
     Tarkista Elementti Status    //div/h4[contains(text(),"${ilmoitusnimi}")]     Ilmoituksen lisääminen epäonnistui
     Tarkista Elementti Status    //div/p[contains(text(),"${ilmoituskuvaus}")]    Ilmoituksen lisääminen epäonnistui

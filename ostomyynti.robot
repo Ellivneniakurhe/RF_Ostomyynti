@@ -19,8 +19,6 @@ Test Teardown    Close All Browsers
 
 *** Variables ***
 # Määritetään muuttujia
-${LINKKI}        https://villeehrukainen.fi/osto/kirjautuminen.html
-
 ${KAYTTAJA}     testuser
 ${SALASANA}     testuser123
 

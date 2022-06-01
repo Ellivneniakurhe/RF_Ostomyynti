@@ -11,14 +11,9 @@ Resource    ostomyynti_view.robot
 # Avainsanat jotka sisältävät monia toiminnallisuuksia kuuluvat tänne
 
 Avaa Selain Sivulle
-    [Arguments]     ${linkki}    ${selain}
+    [Arguments]     ${linkki}
     Log    Avataan selain sivulle    console=True
-    # Asetetaan testin suoritusnopeus ja avainsanojen odotusaika
-    Set Selenium Speed           ${SELENIUM_SPEED}
-    Set Selenium Timeout         ${SELENIUM_TIMEOUT}
-
-    Open Browser    ${linkki}    ${selain}
-    Maximize Browser Window
+    Luo Webdriver Asetuksilla    ${linkki}
 
 Kirjaudu Sisaan
     [Arguments]    ${kayttaja}    ${salasana}    ${tarkista}=False
