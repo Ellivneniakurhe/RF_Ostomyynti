@@ -19,6 +19,8 @@ Test Teardown    Close All Browsers
 
 *** Variables ***
 # Määritetään muuttujia
+${LINKKI}       https://villeehrukainen.fi/osto/kirjautuminen.html
+${SELAIN}       Chrome
 ${KAYTTAJA}     testuser
 ${SALASANA}     testuser123
 
@@ -47,6 +49,7 @@ ${SALASANA}     testuser123
     Kirjaudu Sisaan        ${KAYTTAJA}    ${SALASANA}
     Tee Ilmoitus           Testiotsikko    Testikuvaus
     Kirjaudu Ulos
+
 
 03. Poista Ilmoitus
     [Documentation]    Poistaa luodun ilmoituksen

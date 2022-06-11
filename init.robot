@@ -1,30 +1,34 @@
 *** Settings ***
 Library     SeleniumLibrary
+Library     String
 Library     Collections
 Library     OperatingSystem
 Library     Process
 
-*** Variables ***
-# Yleiset asetukset
-${SELAIN}              Chrome
-${SELENIUM_SPEED}      0.3
-${SELENIUM_TIMEOUT}    3
-
-# Osto- ja myyntikanavan asetukset
-${LINKKI}        https://villeehrukainen.fi/osto/kirjautuminen.html
-
 *** Keywords ***
 
 Luo Webdriver Asetuksilla
-    [Arguments]    ${LINKKI}
+    [Arguments]    ${LINKKI}    ${SELAIN}    ${SEL_SPEED}=0.3    ${SEL_TIMEOUT}=3    ${INCOGNITO}=False
+    # Luodaan webdriver halutulle selaimella, halutuilla asetuksilla
     IF    "${SELAIN}" == "Chrome"
-        ${chrome_options} =    Evaluate    selenium.webdriver.ChromeOptions()
-        Call Method    ${chrome_options}    add_argument    --start-maximized
-        Create WebDriver    Chrome    chrome_options=${chrome_options}
+        ${options}    Evaluate    selenium.webdriver.ChromeOptions()
+        Call Method    ${options}    add_argument    --start-maximized
+        IF    ${INCOGNITO}
+           Call Method    ${options}    add_argument    --incognito
+        END
+        Create WebDriver    Chrome    options=${options}
+    ELSE IF    "${SELAIN}" == "Firefox"
+        ${options}    Evaluate    selenium.webdriver.FirefoxOptions()
+        #Call Method    ${options}    add_argument    --start-maximized
+        IF    ${INCOGNITO}
+           Call Method    ${options}    add_argument    --private
+        END
+        Create WebDriver    Firefox    options=${options}
+        Maximize Browser Window
     END
     
     # Asetetaan testin suoritusnopeus ja avainsanojen odotusaika
-    Set Selenium Speed           ${SELENIUM_SPEED}
-    Set Selenium Timeout         ${SELENIUM_TIMEOUT}
+    Set Selenium Speed           ${SEL_SPEED}
+    Set Selenium Timeout         ${SEL_TIMEOUT}
 
     Goto    ${LINKKI}

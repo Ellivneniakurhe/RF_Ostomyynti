@@ -11,9 +11,9 @@ Resource    ostomyynti_view.robot
 # Avainsanat jotka sisältävät monia toiminnallisuuksia kuuluvat tänne
 
 Avaa Selain Sivulle
-    [Arguments]     ${linkki}
+    [Arguments]     ${linkki}    ${selain}
     Log    Avataan selain sivulle    console=True
-    Luo Webdriver Asetuksilla    ${linkki}
+    Luo Webdriver Asetuksilla    ${linkki}    ${selain}
 
 Kirjaudu Sisaan
     [Arguments]    ${kayttaja}    ${salasana}    ${tarkista}=False
