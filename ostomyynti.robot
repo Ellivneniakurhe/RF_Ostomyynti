@@ -8,7 +8,8 @@ Resource         init.robot
 Resource         ostomyynti_test_steps.robot
 
 # Suoritetaan tämä avainsana jokaisen testitapauksen jälkeen
-Test Teardown    Close All Browsers
+Test Teardown     Close All Browsers
+Suite Teardown    Close All Browsers
 
 # Komennot testi suorittamiseen:
 # robot -i SMOKE -d ./reports/00 ./ostomyynti.robot
@@ -19,10 +20,10 @@ Test Teardown    Close All Browsers
 
 *** Variables ***
 # Määritetään muuttujia
-${LINKKI}       https://villeehrukainen.fi/osto/kirjautuminen.html
+${LINKKI}       omasivu
 ${SELAIN}       Chrome
-${KAYTTAJA}     testuser
-${SALASANA}     testuser123
+${KAYTTAJA}     omakäyttäjä
+${SALASANA}     omasalasana
 
 *** Test Cases ***
 
