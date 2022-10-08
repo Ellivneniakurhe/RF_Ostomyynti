@@ -1,6 +1,6 @@
 *** Settings ***
-# Yleiset asetukset, kirjastot ja muuttujat kaikille testeille
-Resource         init.robot
+# Yleiset avainsanat submoduulista
+Resource         Yleiset/Yleiset_keywords.robot
 
 # Tuodaan avainsanat keywords robotista ja elementtien xpath view robotista
 Resource    ostomyynti_keywords.robot
@@ -9,11 +9,6 @@ Resource    ostomyynti_view.robot
 *** Keyword ***
 # Avainsanat joita kutsutaan testitapauksissa
 # Avainsanat jotka sisältävät monia toiminnallisuuksia kuuluvat tänne
-
-Avaa Selain Sivulle
-    [Arguments]     ${linkki}    ${selain}
-    Log    Avataan selain sivulle    console=True
-    Luo Webdriver Asetuksilla    ${linkki}    ${selain}
 
 Kirjaudu Sisaan
     [Arguments]    ${kayttaja}    ${salasana}    ${tarkista}=False

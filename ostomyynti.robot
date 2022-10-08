@@ -1,13 +1,12 @@
 *** Settings ***
 Metadata         Tekijä    Ville Ehrukainen
-
-# Yleiset asetukset, kirjastot ja muuttujat kaikille testeille
-Resource         init.robot
+Library          SeleniumLibrary
 
 # Tuodaan avainsanoja omasta tiedostosta
 Resource         ostomyynti_test_steps.robot
 
-# Suoritetaan tämä avainsana jokaisen testitapauksen jälkeen
+# Suoritetaan setup eli ennen testien ajoa tietty avainsana ja tiestien jälkeen suljetaan kaikki selaimet
+Test Setup        Aseta Selenium Ajat
 Test Teardown     Close All Browsers
 Suite Teardown    Close All Browsers
 

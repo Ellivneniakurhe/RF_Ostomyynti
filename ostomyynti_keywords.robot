@@ -1,6 +1,5 @@
 *** Settings ***
-# Yleiset asetukset, kirjastot ja muuttujat kaikille testeille
-Resource         init.robot
+Library    SeleniumLibrary
 
 *** Keyword ***
 # Avainsanat joita kutsutaan teststep tasolla
