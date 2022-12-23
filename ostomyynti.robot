@@ -3,7 +3,7 @@ Metadata         Tekijä    Ville Ehrukainen
 Library          SeleniumLibrary
 
 # Tuodaan avainsanoja omasta tiedostosta
-Resource         ostomyynti_test_steps.robot
+Resource         ./resurssit/ostomyynti_test_steps.robot
 
 # Suoritetaan setup eli ennen testien ajoa tietty avainsana ja tiestien jälkeen suljetaan kaikki selaimet
 Test Setup        Aseta Selenium Ajat
